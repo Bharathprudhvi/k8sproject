@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-app
+  labels:
+    name: postgres-app
+    author: spark
+spec:
+  selector:
+    matchLabels:
+      name: postgres-app
+  template:
+    metadata:
+      name: postgres-app-pod
+      labels:
+        name: postgres-app
+    spec:
+      containers:
+        - name: postgres-app
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: spark
+            - name: POSTGRES_USER
+              value: spark
+            - name: POSTGRES_DB
+              value: mydb
